@@ -13,4 +13,11 @@ export class GenericRepository<T> {
   async getAll(): Promise<T[]> {
     return this.repository.getAll();
   }
+
+  async update(id: string, input: T): Promise<void> {
+    return this.repository.update(id, input);
+  }
+  async delete(id: string): Promise<void> {
+    return this.repository.delete(id);
+  }
 }
