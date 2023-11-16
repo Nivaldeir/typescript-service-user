@@ -2,11 +2,7 @@ import { IBaseRepository } from '../../interface/repository/IBaseRepository';
 
 export class Update<T> {
   constructor(private readonly repository: IBaseRepository<T>) { }
-  async execute(input: Input, data: T): Promise<void> {
-    return await this.repository.update(input.id, data);
+  async execute(id: string, data: T): Promise<T> {
+    return await this.repository.update(id, data);
   }
-}
-
-type Input = {
-  id: string
 }
