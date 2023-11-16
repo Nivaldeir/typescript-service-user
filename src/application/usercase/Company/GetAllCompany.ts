@@ -1,4 +1,4 @@
-import { Company, ICompany } from '../../../domain/Company/Company';
+import { Company } from '../../../domain/Company/Company';
 import { GenericRepository } from "../../interface/repository/GenericRepository";
 
 export class GetAllCompany {
