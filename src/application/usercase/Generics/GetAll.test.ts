@@ -1,4 +1,4 @@
-import { Company, ICompany } from "../../../domain/Company/Company";
+import { Company } from "../../../domain/Company/Company";
 import { User } from "../../../domain/User/User";
 import { IBaseRepository } from "../../interface/repository/IBaseRepository";
 import { GetAll } from "./GetAll";
@@ -26,5 +26,5 @@ test('should save input successfully', async () => {
   };
   const get = new GetAll(repositoryMock);
   const output = await get.execute();
-  console.log(output)
+  expect(output).toEqual([user.get(), user.get()]);
 });
