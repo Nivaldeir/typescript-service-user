@@ -7,7 +7,12 @@ export interface IUserSettings {
   languege: string
 }
 export class UserSettings {
-  constructor(readonly props: IUserSettings) {
-    this.props.userSettingsId = props.userSettingsId ?? v4()
+  readonly userSettingsId: string
+  readonly theme: ThemeUserEnum
+  readonly languege: string
+  constructor(readonly properties: IUserSettings) {
+    this.userSettingsId = properties.userSettingsId ?? v4()
+    this.theme = properties.theme
+    this.languege = properties.languege
   }
 }

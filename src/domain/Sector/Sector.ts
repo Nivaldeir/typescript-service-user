@@ -9,7 +9,17 @@ export interface ISector {
 }
 
 export class Sector {
-  constructor(readonly props: ISector) {
-    this.props.sectorId = props.sectorId ?? v4()
+  readonly sectorId: string
+  readonly name: string
+  readonly color?: string
+  readonly greetingMessage?: string
+  readonly queue: any[]
+
+  constructor(readonly properties: ISector) {
+    this.sectorId = properties.sectorId ?? v4()
+    this.name = properties.name
+    this.color = properties.color
+    this.greetingMessage = properties.greetingMessage
+    this.queue = properties.queue
   }
 }
