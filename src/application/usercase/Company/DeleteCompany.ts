@@ -1,5 +1,5 @@
 import { Company } from '../../../domain/Company/Company';
-import { IBaseRepository } from '../../interface/IBaseRepository';
+import { IBaseRepository } from '../../interface/repository/IBaseRepository';
 
 export class DeleteCompany {
   constructor(private readonly repository: IBaseRepository<Company>) { }
