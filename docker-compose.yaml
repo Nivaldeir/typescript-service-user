@@ -1,5 +1,21 @@
 version: "3"
 services:
+  loginservice:
+    image: login
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@postgres:5432/postgres
+      REDIS_PASSWRD: Redis2019!
+      REDIS_HOST: redis-db
+      REDIS_PORT: 6379
+      PORT: 3000
+      JWT_SECURITY: ^W[lwZjglc`keEU+Fh%&q}YY(i1M3rlRmWFQ]-Az
+      JWT_EXPIRES_IN: 7d
+      SESSION_SECURITY: Jf-r_3_QahHVlGMV75&3xOyWjUF6fA8TKSHkq3xBsJLWKk
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis-db
+      - postgres
   postgres:
     image: postgres:latest
     environment:

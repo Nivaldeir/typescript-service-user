@@ -6,9 +6,10 @@ import { MainController } from "./infra/http/MainController";
 import { EmailExternal } from "./infra/Email/EmailExternal";
 import { RedisAdapter } from "./infra/cache/RedisAdapter";
 
+console.log(process.env.DATABASE_URL)
 
-const httpServer = new ExpressAdapter()
 async function main() {
+  const httpServer = new ExpressAdapter()
   const client = new PrismaClient()
   const repositoryFactory = new RepositoryFactoryDatabase(client)
   const usecase = new UsecaseFactory(repositoryFactory, new EmailExternal(), RedisAdapter.getInstance())

@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "build": "npx tsc",
+    "build": "npm run prisma:generate && npx tsc",
     "start": "npm run prisma:generate && npm run build && node dist/index.js",
     "dev": "tsnd --rs --trace-deprecation --env-file=.env src/index.ts",
-    "prisma:generate": "npx prisma migrate dev --name init --skip-generate",
+    "prisma:generate": "npx prisma generate ",
     "test": "jest"
   },
   "dependencies": {

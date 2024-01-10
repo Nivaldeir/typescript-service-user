@@ -7,8 +7,6 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-COPY .env /usr/app/.env
-RUN npx prisma db push
 
 RUN npm run build
 
