@@ -1,21 +1,17 @@
 {
   "compilerOptions": {
-    "incremental": true,
-    "target": "esnext",
+    "target": "es6",
     "module": "commonjs",
-    "rootDir": "./src",
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
     "outDir": "./dist",
-    "removeComments": true,
-    "preserveValueImports": false,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "rootDir": "./src",
     "strict": true,
-    "skipLibCheck": true
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "typeRoots": [
+
+    ]
   },
   "include": ["./src/**/*"],
-  "exclude": ["./dist"]
+  "exclude": ["./dist", "node_modules"]
 }
