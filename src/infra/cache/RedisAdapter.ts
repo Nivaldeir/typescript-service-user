@@ -6,7 +6,10 @@ export class RedisAdapter extends Redis implements CacheRepository {
   private static instance: RedisAdapter;
   constructor() {
     super({
-      password: process.env.REDIS_PASSWORD
+      host: process.env.REDIS_HOST,
+      port: parseInt(process.env.REDIS_PORT!),
+      password: process.env.REDIS_PASSWORD,
+      
     });
     super.on("error", (err: Error) => {
       logger.error(`[REDIS]: ${err.message}`);
