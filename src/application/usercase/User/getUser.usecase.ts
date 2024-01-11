@@ -11,7 +11,7 @@ export class GetUser {
     let user = await this.userRepository.get({
       id: id
     });
-    return {
+    let userDto = {
       email: user.email.value,
       id: user.id,
       isEnabled: user.isEnabled,
@@ -19,9 +19,12 @@ export class GetUser {
       name: user.name,
       password: user.password.value,
       isAdmin: user.isAdmin,
+      type: user.type,
       verificationCode: user.verificationCode,
       verificationDate: user.verificationDate
     }
+    await this.cacheRepository.Set(id, JSON.stringify(userDto))
+    return userDto
   }
 }
 
@@ -36,4 +39,5 @@ type Output = {
   verificationDate?: Date | null,
   verificationCode?: string | null,
   isAdmin?: boolean
+  type: string
 }
