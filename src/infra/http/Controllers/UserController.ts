@@ -19,9 +19,8 @@ export class UserController {
         })
         this.http.on("post", `${this.url}/authentication`, [], async (req: Request, res: Response) => {
             const result = await this.usecaseFactory.User().authentication.execute(req.body)
-            console.log(result)
             res.cookie('token', result.token);
-            return [,200]
+            return [, 200]
         })
         this.http.on("put", `${this.url}/:id`, [Middleware.isValidToUser], async (req: Request) => {
             return [await this.usecaseFactory.User().update.execute(req.params.id, req.body), 200]
@@ -40,6 +39,10 @@ export class UserController {
         })
         this.http.on("post", `${this.url}/recover/verify`, [Middleware.isValidToUser], async (req: Request) => {
             return [await this.usecaseFactory.User().forgotPassword.execute(req.body), 200]
+        })
+        this.http.on("post", `${this.url}/logout`, [], async (req: Request, res: Response) => {
+            res.clearCookie("token");
+            return [, 200]
         })
     }
 }
