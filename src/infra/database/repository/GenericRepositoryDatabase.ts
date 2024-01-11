@@ -31,10 +31,10 @@ export class GenericRepositoryDatabase<T extends ClassGenerict> implements BaseR
             where: {
                 ...whereCondition,
             },
-            
-        })
 
-        return outputs.map((output: any) => new this.createInstance(output)) ?? []
+        })
+        return outputs
+        // return outputs.map((output: any) => new this.createInstance(output)) ?? []
     }
 
     async save(data: T): Promise<void> {
@@ -48,8 +48,13 @@ export class GenericRepositoryDatabase<T extends ClassGenerict> implements BaseR
                     const messageError = `Unique constraint failed on the fields: (${e?.meta?.target})`
                     throw new Error(messageError)
                 }
+                if (e.code === "P2021") {
+                    const messageError = `The table ${e?.meta?.table} does not exist in the current database.`
+                    throw new Error(messageError)
+                }
             }
-            throw new Error(e)
+            console.error("Unexpected error")
+            throw new Error("Unexpected error")
         }
     }
 

@@ -6,7 +6,7 @@ import logger from '../logger';
 import session from "express-session"
 export class ExpressAdapter implements HttpServer {
   app: any;
-
+  
   constructor() {
     this.app = express();
     this.app.set("trust proxy", true);
@@ -43,6 +43,6 @@ export class ExpressAdapter implements HttpServer {
 
   listen(port: number, host?: string) {
     this.app.listen(port, host);
-    logger.info(`Escutando na porta ${port}`);
+    logger.info(`[EXPRESS]: Connected this ${port}`);
   }
 }
