@@ -14,14 +14,23 @@ export class Middleware {
     throw new TokenException("NOT_AUTHENTICATED")
   }
   static isAdmin(req: Request, res: Response, next: NextFunction) {
-    const result = Middleware.isValid(req)
-    if (!result["isAdmin"]) throw new TokenException("NOT_AUTHENTICATED")
-    next()
+    try {
+      const result = Middleware.isValid(req)
+      if (!result["isAdmin"]) throw new Error("NOT_AUTHENTICATED")
+      next()
+    } catch (error: any) {
+      res.status(401).json({ error: error.message });
+    }
+
   }
 
   static isValidToUser(req: Request, res: Response, next: NextFunction) {
-    const result = Middleware.isValid(req)
-    if (!(result["id"] === req.params.id || result["isAdmin"])) throw new TokenException("NOT_AUTHENTICATED")
-    next()
+    try {
+      const result = Middleware.isValid(req)
+      if (!(result["id"] === req.params.id || result["isAdmin"])) throw new TokenException("NOT_AUTHENTICATED")
+      next()
+    } catch (error: any) {
+      res.status(401).json({ error: error.message });
+    }
   }
 }

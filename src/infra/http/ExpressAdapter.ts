@@ -33,6 +33,7 @@ export class ExpressAdapter implements HttpServer {
         const [output, statusCode] = await callback(req, res)
         res.json(output).status(statusCode);
       } catch (error: any) {
+        console.log(error);
         res.status(500).send({
           error: error.message
         });

@@ -17,8 +17,8 @@ export class UsecaseFactory {
 
   User() {
     return {
-      save: new CreateUser(this._user),
-      get: new GetUser(this._user),
+      save: new CreateUser(this._user, this._cacheRepository),
+      get: new GetUser(this._user, this._cacheRepository),
       update: new UpdateUser(this._user),
       show: new ShowUser(this._user, this._cacheRepository),
       delete: new DeleteUser(this._user),
