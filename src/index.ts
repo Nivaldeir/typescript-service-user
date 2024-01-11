@@ -6,8 +6,6 @@ import { MainController } from "./infra/http/MainController";
 import { EmailExternal } from "./infra/Email/EmailExternal";
 import { RedisAdapter } from "./infra/cache/RedisAdapter";
 
-console.log(process.env.DATABASE_URL)
-
 async function main() {
   const httpServer = new ExpressAdapter()
   const client = new PrismaClient()

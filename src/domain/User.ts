@@ -12,6 +12,7 @@ export type IUser = {
   verificationCode?: string | ''
   verificationDate?: Date,
   isAdmin?: boolean
+  type: "Student" | "Teacher"
 }
 
 export class User {
@@ -24,6 +25,7 @@ export class User {
   verificationCode?: string
   verificationDate?: Date | null
   isAdmin?: boolean
+  type: "Student" | "Teacher"
 
   constructor(user: IUser) {
     this.id = user.id
@@ -35,6 +37,7 @@ export class User {
     this.verificationCode = user.verificationCode
     this.verificationDate = user.verificationDate
     this.isAdmin = user.isAdmin
+    this.type = user.type
   }
 
   static Create(user: Omit<IUser, "id" | "isEnabled">): User {
@@ -53,6 +56,7 @@ export class User {
       verificationDate: this.verificationDate,
       verificationCode: this.verificationCode,
       isAdmin: this.isAdmin,
+      type: this.type
     }
   }
   update(user: Partial<Omit<IUser, "id">>) {
@@ -63,5 +67,6 @@ export class User {
     this.verificationCode = user.verificationCode ?? this.verificationCode
     this.verificationDate = user.verificationDate ?? null
     this.isAdmin = user.isAdmin ?? false
+    this.type = user.type ?? this.type
   }
 }

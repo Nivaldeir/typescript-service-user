@@ -15,6 +15,7 @@ model User {
   password         String
   isEnabled        Boolean   @default(false)
   isAdmin          Boolean   @default(false)
+  type             String    @default("Student")
   verificationCode String?
   verificationDate DateTime?
 }

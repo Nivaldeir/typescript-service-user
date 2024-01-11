@@ -16,6 +16,9 @@ services:
     depends_on:
       - redis-db
       - postgres
+    networks:
+      - backend-network
+
   postgres:
     image: postgres:latest
     environment:
@@ -48,6 +51,8 @@ services:
       - "6379:6379"
     volumes:
       - cache:/data
+    networks:
+      - backend-network
 networks:
   backend-network:
   
