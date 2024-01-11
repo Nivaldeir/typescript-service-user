@@ -1,9 +1,14 @@
+import { CacheRepository } from "../../repository/interface/CacheRepository";
 import { UserRepository } from "../../repository/interface/UserRepository";
 
 export class GetUser {
-  constructor(private readonly userRepository: UserRepository) { }
+  constructor(private readonly userRepository: UserRepository, private readonly cacheRepository: CacheRepository) { }
   async execute(id: Input): Promise<Output> {
-    const user = await this.userRepository.get({
+    let cache = await this.cacheRepository.Get(id)
+    if (cache) {
+      return JSON.parse(cache)
+    }
+    let user = await this.userRepository.get({
       id: id
     });
     return {

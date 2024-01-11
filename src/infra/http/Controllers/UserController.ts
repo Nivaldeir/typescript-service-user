@@ -19,6 +19,7 @@ export class UserController {
         })
         this.http.on("post", `${this.url}/authentication`, [], async (req: Request, res: Response) => {
             const result = await this.usecaseFactory.User().authentication.execute(req.body)
+            console.log(result)
             res.cookie('token', result.token);
             return [,200]
         })
