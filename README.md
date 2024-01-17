@@ -26,6 +26,9 @@ npm run start
 Mencione as ferramentas que você usou para criar seu projeto
 
 * NPM - Dependency Manager
+* Docker
+* Postgres
+* Cookies
 ## ✒️ Authors
 
 [nivaldeir](https://github.com/nivaldeir).
